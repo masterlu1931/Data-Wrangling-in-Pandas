@@ -1,0 +1,13 @@
+import pandas as pd
+A={'Student':['Ice Bear','Panda','Grizzly'],'Math':[80,95,79]}
+B={'Student':['Ice Bear','Panda','Grizzly'],'Electronics':[85,81,83]}
+C={'Student':['Ice Bear','Panda','Grizzly'],'GEAS':[90,79,93]}
+D={'Student':['Ice Bear','Panda','Grizzly'],'ESAT':[93,89,88]}
+e=pd.DataFrame(A)
+f=pd.DataFrame(B)
+g=pd.DataFrame(C)
+h=pd.DataFrame(D)
+E=e.merge(f)
+F=g.merge(h)
+G=E.merge(F)
+i=pd.melt(G,id_vars='Student',value_vars=['Math','Electronics','GEAS','ESAT'],var_name='Subjects',value_name='Grades').sort_values('Student').reset_index().drop(columns='index')
